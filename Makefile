@@ -19,3 +19,5 @@ prod:
 
 prod_build:
 	docker-compose -f docker-compose_prod.yml build
+shell:
+	docker-compose exec php bash

@@ -7,6 +7,7 @@ ARG WORKDIR=/app
 
 RUN docker-php-source extract \
   && apk add --update --virtual .build-deps autoconf g++ make pcre-dev icu-dev openssl-dev libxml2-dev libmcrypt-dev git libpng-dev \
+  && apk add --no-cache bash \
   # Install pgsql goodness
   && apk add postgresql-dev \
   && docker-php-ext-install pgsql pdo_pgsql \
