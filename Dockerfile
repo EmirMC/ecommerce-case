@@ -60,6 +60,9 @@ VOLUME ${WORKDIR}/var
 COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
 
+RUN chown www-data:www-data -R ${WORKDIR}/var/* ${WORKDIR}/vendor/*
+USER www-data
+
 ENTRYPOINT ["docker-entrypoint"]
 CMD ["php-fpm"]
 

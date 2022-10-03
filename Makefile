@@ -4,10 +4,18 @@ up:
 down:
 	docker-compose down
 
-rebuild:
+build:
 	docker-compose down -v --remove-orphans
 	docker-compose rm -vsf
-	docker-compose up -d --build
+	docker-compose build --build-arg USERID=$(shell (id -u))
+	docker-compose up -d
+	make dbr
+
+shell:
+	docker-compose exec php bash
+
+db:
+	docker-compose exec postgres bash
 
 dbr: db-remove db-create migrate load-fixtures # Database reset
 
@@ -16,9 +24,6 @@ prod:
 
 prod_build:
 	docker-compose -f docker-compose_prod.yml build
-
-shell:
-	docker-compose exec php bash
 
 db-remove:
 	docker-compose exec php ./bin/console doctrine:database:drop --force
@@ -31,3 +36,6 @@ migrate:
 
 load-fixtures:
 	docker-compose exec php ./bin/console doctrine:fixtures:load -n
+
+jwt-generate-keypair:
+	docker-compose exec php ./bin/console lexik:jwt:generate-keypair
