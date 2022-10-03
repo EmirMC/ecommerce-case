@@ -10,6 +10,7 @@ build:
 	docker-compose build --build-arg USERID=$(shell (id -u))
 	docker-compose up -d
 	make dbr
+	make jwt-generate-keypair
 
 shell:
 	docker-compose exec php bash
