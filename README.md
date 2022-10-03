@@ -1,9 +1,56 @@
-# E-Commerce Project Case
+# Symfony E-Commerce Project Case
 
 ## Getting Started
 
-1. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/)
-2. Run `make build` to build and up image
-3. Running `http://localhost:8080`
-4. Open [Open Postgresql Documentation](https://earnado.postman.co/workspace/10170301-9119-4ccb-88fe-9e3c3666b577/collection/19385172-ae667c3b-e42d-4bae-8dcb-62ab3b79824d?action=share&creator=19385172)
-5. Run `make down` to stop the Docker containers.
+1. `git clone https://github.com/EmirMC/ecommerce-case.git`
+2. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/)
+3. Run `make build` to build and up image
+4. Running `http://localhost:8080`
+5. Open [Open Postman JSON Documentation](https://www.getpostman.com/collections/006581f8d2d672913022)
+6. Run `make down` to stop the Docker containers.
+
+# Postman Document Introduction
+
+1. Authentication
+2. POST Order Create
+3. GET Orders
+4. Try Get Order By Order Code
+5. PUT Order Update
+6. PUT Order ShippingDate Update
+
+## Authentication
+
+Request: POST Login
+Endpoint: /api/login_check
+Current Users:
+
+### First User
+
+```json
+{
+    "email": "demo0@demo.com",
+    "password": "demo123"
+}
+```
+
+### Second User
+
+```json
+{
+    "email": "demo1@demo.com",
+    "password": "demo123"
+}
+```
+
+### Thirth User
+
+```json
+{
+    "email": "demo2@demo.com",
+    "password": "demo123"
+}
+```
+
+1. Copy to token code
+2. Open Variables and paste token in accessToken input
+   Token expiry time 1 hours
